@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}">
+</head>
+<body class="bg-light vsc-initialized d-flex flex-column min-vh-100">
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+
+                <img class="d-block mx-auto mb-4" src="{{url_for('static', filename='pdf_icon.png')}}" alt="" width="72" height="57">
+                <h2>Seperador de PDF - Contracheques</h2>
+                <p class="lead">Salve separadamente, com o nome do colaborador e a competência, os contracheques que estão consolidados em um único arquivo PDF.</p>
+            </div>
+            
+
+            {% set mensagens = get_flashed_messages() %}
+            {% if mensagens  %}
+                <div class="alert alert-danger text-center" role="alert">
+                    {% for msg in mensagens  %}
+                        {{ msg }}
+                    {% endfor  %}    
+                </div>
+            {% endif %}
+
+            <form method="POST" enctype="multipart/form-data" action="/upload">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-9 col-sm-9 col-md-7 col-lg-7">
+                        <!-- <label for="formFile" class="form-label">Default file input example</label> -->
+                        <input class="form-control" name="arquivo" type="file" id="formFile" accept=".pdf" >
+                    </div>
+                </div>
+                <div class="row p-5 d-flex justify-content-center">
+                    <div class="col-md-7 col-lg d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark">Confirmar</button>
+                    </div> 
+                </div>
+            </form>    
+        </main>
+
+    </div>
+    <footer class="mt-5 pt-5 text-muted text-center text-small d-flex align-items-end justify-content-center mt-auto">
+        <p class="mb-1 ">© 2022 - Created by Diogo Luis</p>
+    </footer>
+</body>
+</html>
