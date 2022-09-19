@@ -22,13 +22,13 @@ def index():
 def upload(): 
     file = request.files['arquivo']
     if file:
-        savePath = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
+        # savePath = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
         # file.save(savePath)
         # split_file(savePath)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
-        return print(savePath)
+        return print(os.getcwd())
         # return send_file(FILE_ZIP, as_attachment=True)
     else:
         flash('Nenhum arquivo selecionado')
