@@ -24,7 +24,7 @@ def index():
 def upload(): 
     file = request.files['arquivo']
     if file:
-        savePath = os.path.join(UPLOAD_FOLDER ,secure_filename(file.name))
+        savePath = os.path.join(UPLOAD_FOLDER ,file.name)
         # file.save(savePath)
         # split_file(savePath)
         # empty_zip_folder()
