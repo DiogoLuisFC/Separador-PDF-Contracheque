@@ -10,6 +10,7 @@ import time
 app = Flask(__name__)
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/src/upload')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = '6a2a6dadeae0eb1f5dc98cf6d383b1b500e21234c39a473b76d55a56bedcb2d4'
 DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'static/src/download')
 today = time.strftime("%d-%m-%Y")
 FILE_ZIP_PATH = os.path.join(os.getcwd(),'static/src/zip_file')

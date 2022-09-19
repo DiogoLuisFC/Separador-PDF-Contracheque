@@ -1,3 +1,3 @@
 
 
-SECRET_KEY = '6a2a6dadeae0eb1f5dc98cf6d383b1b500e21234c39a473b76d55a56bedcb2d4'
+# SECRET_KEY = '6a2a6dadeae0eb1f5dc98cf6d383b1b500e21234c39a473b76d55a56bedcb2d4'
