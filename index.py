@@ -28,7 +28,7 @@ def upload():
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
-        redirect('/')
+        return redirect('/')
         # return send_file(FILE_ZIP, as_attachment=True)
     else:
         # flash('Nenhum arquivo selecionado')
