@@ -23,18 +23,20 @@ def index():
 def upload(): 
     file = request.files['arquivo']
     if file:
-        # savePath = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
+        savePath = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
         # file.save(savePath)
         # split_file(savePath)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
-        print("teste")
+        # print("teste")
+        return savePath
         # return send_file(FILE_ZIP, as_attachment=True)
     else:
         flash("Nenhum arquivo selecionado")
-        # return redirect('/')
-    return redirect('/')
+        return redirect('/')
+     
+    
 
 @app.route('/split_file')
 def split_file(uploadFilePath):
