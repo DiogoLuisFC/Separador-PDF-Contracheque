@@ -21,18 +21,19 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload(): 
     file = request.files['arquivo']
-    if file:
+    # if file:
         # savePath = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
         # file.save(savePath)
         # split_file(savePath)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
-        redirect('/')
+        # redirect('/')
         # return send_file(FILE_ZIP, as_attachment=True)
-    else:
-        flash('Nenhum arquivo selecionado')
-        return redirect('/')
+    # else:
+    #     flash('Nenhum arquivo selecionado')
+    #     return redirect('/')
+    return redirect('/')
 
 @app.route('/split_file')
 def split_file(uploadFilePath):
