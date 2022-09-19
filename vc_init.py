@@ -57,7 +57,7 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
             body = base64.b64decode(body)
 
         request_body = body.encode('utf-8') if isinstance(body, str) else body
-        conn = http.client.HTTPConnection('0.0.0.0', port)
+        conn = http.client.HTTPConnection('127.0.0.1', port)
         conn.request(method, path, headers=headers, body=request_body)
         res = conn.getresponse()
 
