@@ -8,7 +8,6 @@ import os
 import time
  
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret_key'
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/src/upload')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'static/src/download')
@@ -24,7 +23,7 @@ def index():
 def upload(): 
     file = request.files['arquivo']
     if file:
-        savePath = os.path.join('/')
+        savePath = os.path.join(app.config['UPLOAD_FOLDER'],secure_filename(file.name))
         file.save(savePath)
         # split_file(savePath)
         # empty_zip_folder()
