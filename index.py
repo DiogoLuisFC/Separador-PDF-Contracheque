@@ -35,7 +35,7 @@ def upload():
     # else:
     #     flash("Nenhum arquivo selecionado")
     #     return redirect('/')
-    return redirect('/')
+    return "teste"
      
     
 
