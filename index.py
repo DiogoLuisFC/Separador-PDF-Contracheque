@@ -31,7 +31,7 @@ def upload():
         redirect('/')
         # return send_file(FILE_ZIP, as_attachment=True)
     else:
-        flash('Nenhum arquivo selecionado')
+        # flash('Nenhum arquivo selecionado')
         return redirect('/')
     # return redirect('/')
 
