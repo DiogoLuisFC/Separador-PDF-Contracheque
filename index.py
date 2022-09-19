@@ -8,10 +8,10 @@ import time
  
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static\\src\\upload')
-DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'static\\src\\download')
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/src/upload')
+DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'static/src/download')
 today = time.strftime("%d-%m-%Y")
-FILE_ZIP_PATH = os.path.join(os.getcwd(),'static\\src\\zip_file')
+FILE_ZIP_PATH = os.path.join(os.getcwd(),'static/src/zip_file')
 FILE_ZIP = os.path.join(FILE_ZIP_PATH,'Contracheques_{}.zip'.format(today))
 
 @app.route('/')
@@ -23,13 +23,13 @@ def upload():
     file = request.files['arquivo']
     if file:
         savePath = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
-        file.save(savePath)
-        split_file(savePath)
-        empty_zip_folder()
-        zip_files()
-        empty_donwload_folder()
+        # file.save(savePath)
+        # split_file(savePath)
+        # empty_zip_folder()
+        # zip_files()
+        # empty_donwload_folder()
         redirect('/')
-        return send_file(FILE_ZIP, as_attachment=True)
+        # return send_file(FILE_ZIP, as_attachment=True)
     else:
         flash('Nenhum arquivo selecionado')
         return redirect('/')
@@ -70,4 +70,5 @@ def empty_zip_folder():
         os.remove(os.path.join(FILE_ZIP_PATH, f))        
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run()
