@@ -27,11 +27,11 @@ def upload():
     if file:
         savePath = os.path.join(UPLOAD_FOLDER ,file.name)
         # file.save(savePath)
-        split_file(file)
+        # split_file(file)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
-        return file.name
+        return redirect('/')
         # return send_file(FILE_ZIP, as_attachment=True)
     else:
         # flash("Nenhum arquivo selecionado")
