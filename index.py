@@ -27,7 +27,7 @@ def upload():
     if file:
         savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
         # file.save(savePath)
-        split_file(file)
+        # split_file(file)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
