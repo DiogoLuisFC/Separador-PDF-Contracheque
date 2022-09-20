@@ -1,3 +1,4 @@
+from msilib.schema import File
 from flask import Flask, render_template, request, send_file, redirect, flash
 from PyPDF2 import PdfReader, PdfFileWriter
 from werkzeug.utils import secure_filename
@@ -25,7 +26,7 @@ def upload():
     if file:
         savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
         # file.save(savePath)
-        # split_file(file)
+        split_file(file)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
@@ -40,7 +41,7 @@ def upload():
     
 
 @app.route('/split_file')
-def split_file():
+def split_file(file: File):
     # pdf = PdfReader(file)
 
     # for i in range(pdf.numPages): 
