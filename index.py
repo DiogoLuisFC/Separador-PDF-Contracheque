@@ -42,7 +42,7 @@ def upload():
 
 @app.route('/split_file')
 def split_file(file: File):
-    pdf = PdfReader(file)
+    # pdf = PdfReader(file)
 
     # for i in range(pdf.numPages): 
     #     page = pdf.pages[i]
@@ -58,7 +58,8 @@ def split_file(file: File):
     #     output.addPage(pdf.getPage(i))
         # with open(downloadFilePath + ".pdf", "wb") as outputStream:
             # output.write(outputStream)
-
+    return redirect('/')
+    
 @app.route('/zip_files')
 def zip_files():
     with ZipFile(FILE_ZIP, 'w') as zipObj:
