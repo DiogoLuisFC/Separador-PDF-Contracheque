@@ -1,4 +1,3 @@
-from msilib.schema import File
 from flask import Flask, render_template, request, send_file, redirect, flash
 from http.server import BaseHTTPRequestHandler
 from PyPDF2 import PdfReader, PdfFileWriter
@@ -27,11 +26,11 @@ def upload():
     if file:
         savePath = os.path.join(UPLOAD_FOLDER ,file.name)
         # file.save(savePath)
-        # split_file(file)
+        # split_file(savePath)
         # empty_zip_folder()
         # zip_files()
         # empty_donwload_folder()
-        return redirect('/')
+        return file.name
         # return send_file(FILE_ZIP, as_attachment=True)
     else:
         # flash("Nenhum arquivo selecionado")
@@ -41,8 +40,8 @@ def upload():
     
 
 @app.route('/split_file')
-def split_file(file: File):
-    pdf = PdfReader(file)
+def split_file(uploadFilePath):
+    pdf = PdfReader(uploadFilePath)
 
     for i in range(pdf.numPages): 
         page = pdf.pages[i]
