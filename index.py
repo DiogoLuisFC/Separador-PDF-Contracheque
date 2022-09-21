@@ -25,13 +25,10 @@ def upload():
     file = request.files['arquivo']
     if file:
         savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
-        # file.save(savePath)
         split_file(file)
         empty_zip_folder()
         zip_files()
         empty_donwload_folder()
-        # return file.filename
-        # return redirect('/')
         return send_file(FILE_ZIP, as_attachment=True)
     else:
         flash("Nenhum arquivo selecionado")
