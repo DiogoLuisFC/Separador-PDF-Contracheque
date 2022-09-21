@@ -27,14 +27,14 @@ def upload():
         savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
         # file.save(savePath)
         split_file(file)
-        # empty_zip_folder()
-        # zip_files()
-        # empty_donwload_folder()
+        empty_zip_folder()
+        zip_files()
+        empty_donwload_folder()
         # return file.filename
-        return redirect('/')
-        # return send_file(FILE_ZIP, as_attachment=True)
+        # return redirect('/')
+        return send_file(FILE_ZIP, as_attachment=True)
     else:
-        # flash("Nenhum arquivo selecionado")
+        flash("Nenhum arquivo selecionado")
         return redirect('/')
 
      
@@ -42,22 +42,22 @@ def upload():
 
 @app.route('/split_file')
 def split_file(file: File):
-    # pdf = PdfReader(file)
+    pdf = PdfReader(file)
 
-    # for i in range(pdf.numPages): 
-    #     page = pdf.pages[i]
-    #     text = page.extract_text()
-    #     posicao_nome = text.find('Nome')
-    #     posicao_competencia = text.find('Competência')
-    #     nome = text[posicao_nome + 4:posicao_competencia]
-    #     competencia = text[posicao_competencia + 11:posicao_competencia + 21]
-    #     competencia = competencia.replace('/','_')
-    #     nome_arquivo_separado = nome.strip() + '_' + competencia.strip()
-    #     downloadFilePath = os.path.join(DOWNLOAD_FOLDER, nome_arquivo_separado)
-    #     output = PdfFileWriter()
-    #     output.addPage(pdf.getPage(i))
-        # with open(downloadFilePath + ".pdf", "wb") as outputStream:
-            # output.write(outputStream)
+    for i in range(pdf.numPages): 
+        page = pdf.pages[i]
+        text = page.extract_text()
+        posicao_nome = text.find('Nome')
+        posicao_competencia = text.find('Competência')
+        nome = text[posicao_nome + 4:posicao_competencia]
+        competencia = text[posicao_competencia + 11:posicao_competencia + 21]
+        competencia = competencia.replace('/','_')
+        nome_arquivo_separado = nome.strip() + '_' + competencia.strip()
+        downloadFilePath = os.path.join(DOWNLOAD_FOLDER, nome_arquivo_separado)
+        output = PdfFileWriter()
+        output.addPage(pdf.getPage(i))
+        with open(downloadFilePath + ".pdf", "wb") as outputStream:
+            output.write(outputStream)
     return redirect('/')
 
 @app.route('/zip_files')
