@@ -25,7 +25,7 @@ def upload():
     file = request.files['arquivo']
     if file:
         savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
-        split_file(file)
+        split_file(savePath)
         empty_zip_folder()
         zip_files()
         empty_donwload_folder()
@@ -38,7 +38,7 @@ def upload():
     
 
 @app.route('/split_file')
-def split_file(file: File):
+def split_file(file):
     pdf = PdfReader(file)
 
     for i in range(pdf.numPages): 
