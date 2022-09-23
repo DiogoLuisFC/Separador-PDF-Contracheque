@@ -22,8 +22,8 @@ def index():
 def upload(): 
     file = request.files['arquivo']
     if file:
-        savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
-        split_file(savePath)
+        # savePath = os.path.join(UPLOAD_FOLDER ,file.filename)
+        split_file(file)
         empty_zip_folder()
         zip_files()
         empty_donwload_folder()
@@ -48,7 +48,7 @@ def split_file(file):
         competencia = text[posicao_competencia + 11:posicao_competencia + 21]
         competencia = competencia.replace('/','_')
         nome_arquivo_separado = nome.strip() + '_' + competencia.strip()
-        downloadFilePath = os.path.join(DOWNLOAD_FOLDER, nome_arquivo_separado)
+        downloadFilePath = os.path.join(os.getcwd(), nome_arquivo_separado)
         output = PdfFileWriter()
         output.addPage(pdf.getPage(i))
         with open(downloadFilePath + ".pdf", "wb") as outputStream:
